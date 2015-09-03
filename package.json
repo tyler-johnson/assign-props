@@ -1,0 +1,23 @@
+{
+	"name": "assign-props",
+	"version": "1.0.0",
+	"description": "A easy method for assigning non-writable values to objects.",
+	"license": "MIT",
+	"repository": "https://github.com/tyler-johnson/assign-props.git",
+	"author": {
+		"name": "Tyler Johnson",
+		"email": "tyler@tylerjohnson.me",
+		"url": "github.com/tyler-johnson"
+	},
+	"scripts": {
+		"test": "node test.js"
+	},
+	"keywords": [
+		"assign",
+		"properties",
+		"define"
+	],
+	"devDependencies": {
+		"tape": "~4.2.0"
+	}
+}
