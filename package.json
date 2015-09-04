@@ -1,6 +1,6 @@
 {
 	"name": "assign-props",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "Quickly define immutable properties on objects.",
 	"license": "MIT",
 	"repository": "https://github.com/tyler-johnson/assign-props.git",
