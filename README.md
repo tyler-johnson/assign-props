@@ -20,9 +20,9 @@ obj.foo; // → "bar"
 
 #### assignProps(obj, key, value [, options ])
 
-Define an immutable `key` on some JavaScript object, `obj`. This is sugar for `Object.defineProperty()`.
+Define an immutable `key` on some JavaScript object, `obj`. This is sugar for [`Object.defineProperty()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty).
 
-If `value` is a function, it is considered a dynamic value and a property getter will be defined.
+If `value` is a function, it is considered a dynamic value and an accessor descriptor will be defined.
 
 ```js
 assignProps(obj, "four", function() {
@@ -32,7 +32,7 @@ assignProps(obj, "four", function() {
 obj.four; // → 4
 ```
 
-If `value` is any other than a function, or `options.forceStatic` is true, `value` will be defined as a static value.
+If `value` is any other than a function, or `options.forceStatic` is true, `value` will be defined using a data descriptor.
 
 ```js
 assignProps(obj, "hello", "world");
@@ -42,7 +42,7 @@ obj.hello; // → "world"
 
 Here are the available options:
 
-- __`forceStatic`__ - Forces the value to applied as a static value. Useful if you absolutely need a function defined with `writable: false`.
+- __`forceStatic`__ - Forces the value to applied as a static value. Useful if you absolutely need a function defined with a data descriptor.
 - __`configurable`__ - Sets the `defineProperty()` configurable value. Defaults to `false`.
 - __`enumerable`__ - Sets the `defineProperty()` enumerable value. Defaults to `true`.
 
