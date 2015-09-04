@@ -90,18 +90,3 @@ test("assigns a many values", function(t) {
 	t.equal(obj.foo, 12345, "static key has correct value");
 	t.equal(obj.bar, "hello", "dynamic key has correct value");
 });
-
-// test("assigns a mixed values", function(t) {
-// 	t.plan(2);
-//
-// 	var obj = {};
-// 	var getter = function() { return "hello"; };
-//
-// 	assignProps(obj, {
-// 		foo: 12345,
-// 		bar: getter
-// 	});
-//
-// 	t.equal(obj.foo, 12345, "static key has correct value");
-// 	t.equal(obj.bar, "hello", "dynamic key has correct value");
-// });
