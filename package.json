@@ -1,6 +1,6 @@
 {
 	"name": "assign-props",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A easy method for assigning non-writable values to objects.",
 	"license": "MIT",
 	"repository": "https://github.com/tyler-johnson/assign-props.git",
@@ -10,7 +10,9 @@
 		"url": "github.com/tyler-johnson"
 	},
 	"scripts": {
-		"test": "node test.js"
+		"lint": "jshint *.js",
+		"test": "npm run lint && node test.js",
+		"prepublish": "npm run test"
 	},
 	"keywords": [
 		"assign",
@@ -18,6 +20,7 @@
 		"define"
 	],
 	"devDependencies": {
+		"jshint": "~2.8.0",
 		"tape": "~4.2.0"
 	}
 }

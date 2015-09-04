@@ -1,69 +1,62 @@
 # Assign Props
 
-Assigns non-writable values to JavaScript objects. This is mostly sugar for `Object.defineProperty()`.
+Define immutable values on JavaScript objects.
 
-### Assign Static Properties
-
-```js
-assignProps(obj, "foo", 12345);
+```sh
+$ npm install assign-props
 ```
 
-This is equivalent to:
+```js
+var assignProps = require("assign-props");
+
+var obj = {};
+assignProps(obj, "foo", "bar");
+obj.foo = 12345;
+
+obj.foo; // → "bar"
+```
+
+### Usage
+
+#### assignProps(obj, key, value [, options ])
+
+Define an immutable `key` on some JavaScript object, `obj`. This is sugar for `Object.defineProperty()`.
+
+If `value` is a function, it is considered a dynamic value and a property getter will be defined.
 
 ```js
-Object.defineProperty(obj, "foo", {
-	value: 12345,
-	writable: false,
-	configurable: false,
-	enumerable: true
+assignProps(obj, "four", function() {
+    return 2 + 2;
 });
+
+obj.four; // → 4
 ```
 
-### Assign Dynamic Properties
+If `value` is any other than a function, or `options.forceStatic` is true, `value` will be defined as a static value.
 
 ```js
-assignProps(obj, "bar", function() {
-	return this.foo;
-});
+assignProps(obj, "hello", "world");
+
+obj.hello; // → "world"
 ```
 
-This is equivalent to:
+Here are the available options:
 
-```js
-Object.defineProperty(obj, "foo", {
-	get: function() {
-		return this.foo;
-	},
-	configurable: false,
-	enumerable: true
-});
-```
+- __`forceStatic`__ - Forces the value to applied as a static value. Useful if you absolutely need a function defined with `writable: false`.
+- __`configurable`__ - Sets the `defineProperty()` configurable value. Defaults to `false`.
+- __`enumerable`__ - Sets the `defineProperty()` enumerable value. Defaults to `true`.
 
-### Assign Many Properties
+#### assignProps(obj, props [, options ])
+
+Similar to above, this assigns multiple values to a JavaScript object, `obj`. Pass an object of keys mapped to values and they will be applied in the same fashion.
 
 ```js
 assignProps(obj, {
-	foo: 12345,
-	bar: function() { return this.foo; }
-});
-```
-
-This is equivalent to:
-
-```js
-Object.defineProperties(obj, {
-	foo: {
-		value: 12345,
-		writable: false,
-		configurable: false,
-		enumerable: true
-	},
-	bar: {
-		get: function() {
-			return this.foo;
-		},
-		configurable: false,
-		enumerable: true
+	name: "World",
+	greeting: function() {
+		return "Hello " + this.name;
 	}
 });
+
+obj.greeting; // → "Hello World"
 ```
