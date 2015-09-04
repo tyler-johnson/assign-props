@@ -1,7 +1,7 @@
 {
 	"name": "assign-props",
-	"version": "1.1.0",
-	"description": "A easy method for assigning non-writable values to objects.",
+	"version": "1.1.1",
+	"description": "Quickly define immutable properties on objects.",
 	"license": "MIT",
 	"repository": "https://github.com/tyler-johnson/assign-props.git",
 	"author": {
